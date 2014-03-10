@@ -27,6 +27,7 @@ namespace Test_deplacement
 
         public void Update(MouseState mouseState, KeyboardState keyboardState, GraphicsDevice graphicsDevice, Decors decors)
         {
+            /// <control>
             if (keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.W))
             {
                 hitbox.Y -= 5;
@@ -43,6 +44,8 @@ namespace Test_deplacement
             {
                 hitbox.X -= 5;
             }
+            /// </control>
+            /// <ToStayInWindow>
             if (hitbox.X < 0)
             {
                 hitbox.X = 0;
@@ -59,21 +62,31 @@ namespace Test_deplacement
             {
                 hitbox.Y = graphicsDevice.Viewport.Height - hitbox.Height;
             }
-            if (hitbox.X + hitbox.Width > decors.Hitbox.X && hitbox.X + hitbox.Width < decors.Hitbox.X + decors.Hitbox.Width && (hitbox.Y + hitbox.Height > decors.Hitbox.Y && hitbox.Y < decors.Hitbox.Y + decors.Hitbox.Height))
+            /// </ToStayInWindow>
+            if (hitbox.X >= decors.Hitbox.X && hitbox.X + hitbox.Width <= decors.Hitbox.X + decors.Hitbox.Width) // Test if Casper is between the bounds of the platform.
             {
-                hitbox.X -= 5; // gauche
+                if (hitbox.Y + hitbox.Height >= decors.Hitbox.Y && hitbox.Y < decors.Hitbox.Y)
+                {
+                    hitbox.Y = decors.Hitbox.Y - hitbox.Height - 1; // Block Casper above the platform.
+                }
+                if (hitbox.Y <= decors.Hitbox.Y + decors.Hitbox.Height && hitbox.Y + hitbox.Height > decors.Hitbox.Y + decors.Hitbox.Height)
+                {
+                    hitbox.Y = decors.Hitbox.Y + decors.Hitbox.Height + 1; // Block Casper under the platform.
+                }
             }
-            if (hitbox.X < decors.Hitbox.X + hitbox.Width && hitbox.X > decors.Hitbox.X && (hitbox.Y + hitbox.Height > decors.Hitbox.Y && hitbox.Y < decors.Hitbox.Y + decors.Hitbox.Height))
+            else // Here Casper is out of the bounds of the platform, to the left or to the right.
             {
-                hitbox.X += 5; // droite
-            }
-            if (hitbox.Y < decors.Hitbox.Y + decors.Hitbox.Height && hitbox.Y > decors.Hitbox.Y && hitbox.X + hitbox.Width > decors.Hitbox.X && hitbox.X < decors.Hitbox.X + decors.Hitbox.Width)
-            {
-                hitbox.Y = decors.Hitbox.Y + decors.Hitbox.Height; // Attention avec la gravité, pour éviter les sursauts [ dessous de plateforme]
-            }
-            if (hitbox.Y + hitbox.Height > decors.Hitbox.Y && hitbox.Y + hitbox.Height < decors.Hitbox.Y + decors.Hitbox.Height && hitbox.X + hitbox.Width > decors.Hitbox.X && hitbox.X < decors.Hitbox.X + decors.Hitbox.Width)
-            {
-                hitbox.Y = decors.Hitbox.Y + hitbox.Width; // a regler sautillement/faille spatio temporel
+                if (hitbox.Y + hitbox.Height >= decors.Hitbox.Y && hitbox.Y <= decors.Hitbox.Y + decors.Hitbox.Height) // Then Casper is at the same height as the platform.
+                {
+                    if (hitbox.X + hitbox.Width >= decors.Hitbox.X && hitbox.X < decors.Hitbox.X)
+                    {
+                        hitbox.X = decors.Hitbox.X - hitbox.Width; // Block Casper at the left of the platform.
+                    }
+                    if (hitbox.X <= decors.Hitbox.X + decors.Hitbox.Width && hitbox.X + hitbox.Width > decors.Hitbox.X + decors.Hitbox.Width)
+                    {
+                        hitbox.X = decors.Hitbox.X + decors.Hitbox.Width + 1; // Block Casper at the right of platform.
+                    }
+                }
             }
 
             hitbox.Y += 1;

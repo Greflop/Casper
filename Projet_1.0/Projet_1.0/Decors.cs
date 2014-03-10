@@ -24,7 +24,7 @@ namespace Test_deplacement
         public Decors(ContentManager content)
         {
             decorsTexture = content.Load<Texture2D>("ground");
-            hitbox = new Rectangle(0, 1002, 995, 48); // a definir [ objet a placer fixe ]
+            hitbox = new Rectangle(400, 500, 995, 48); // a definir [ objet a placer fixe ]
         }
 
         public void Update(Fantome fantome)
