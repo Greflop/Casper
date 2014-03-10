@@ -63,7 +63,8 @@ namespace Test_deplacement
                 hitbox.Y = graphicsDevice.Viewport.Height - hitbox.Height;
             }
             /// </ToStayInWindow>
-            if (hitbox.X >= decors.Hitbox.X && hitbox.X + hitbox.Width <= decors.Hitbox.X + decors.Hitbox.Width) // Test if Casper is between the bounds of the platform.
+            // if (hitbox.X >= decors.Hitbox.X && hitbox.X + hitbox.Width <= decors.Hitbox.X + decors.Hitbox.Width) // Test if Casper is between the bounds of the platform.
+            if (hitbox.X + hitbox.Width >= decors.Hitbox.X && hitbox.X <= decors.Hitbox.X + decors.Hitbox.Width)
             {
                 if (hitbox.Y + hitbox.Height >= decors.Hitbox.Y && hitbox.Y < decors.Hitbox.Y)
                 {
@@ -74,22 +75,23 @@ namespace Test_deplacement
                     hitbox.Y = decors.Hitbox.Y + decors.Hitbox.Height + 1; // Block Casper under the platform.
                 }
             }
-            else // Here Casper is out of the bounds of the platform, to the left or to the right.
+
+            //else // Here Casper is out of the bounds of the platform, to the left or to the right.
+            //{
+            if (hitbox.Y + hitbox.Height >= decors.Hitbox.Y && hitbox.Y <= decors.Hitbox.Y + decors.Hitbox.Height) // Then Casper is at the same height as the platform.
             {
-                if (hitbox.Y + hitbox.Height >= decors.Hitbox.Y && hitbox.Y <= decors.Hitbox.Y + decors.Hitbox.Height) // Then Casper is at the same height as the platform.
+                if (hitbox.X + hitbox.Width >= decors.Hitbox.X && hitbox.X < decors.Hitbox.X)
                 {
-                    if (hitbox.X + hitbox.Width >= decors.Hitbox.X && hitbox.X < decors.Hitbox.X)
-                    {
-                        hitbox.X = decors.Hitbox.X - hitbox.Width; // Block Casper at the left of the platform.
-                    }
-                    if (hitbox.X <= decors.Hitbox.X + decors.Hitbox.Width && hitbox.X + hitbox.Width > decors.Hitbox.X + decors.Hitbox.Width)
-                    {
-                        hitbox.X = decors.Hitbox.X + decors.Hitbox.Width + 1; // Block Casper at the right of platform.
-                    }
+                    hitbox.X = decors.Hitbox.X - hitbox.Width - 1; // Block Casper at the left of the platform.
+                }
+                if (hitbox.X <= decors.Hitbox.X + decors.Hitbox.Width && hitbox.X + hitbox.Width > decors.Hitbox.X + decors.Hitbox.Width)
+                {
+                    hitbox.X = decors.Hitbox.X + decors.Hitbox.Width + 1; // Block Casper at the right of platform.
                 }
             }
+            // }
 
-            hitbox.Y += 1;
+            //hitbox.Y += 1;
         }
 
         public void Draw(SpriteBatch spriteBatch)

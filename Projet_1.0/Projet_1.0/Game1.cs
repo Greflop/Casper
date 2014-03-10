@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Projet_1._0;
 
 namespace Test_deplacement
 {
@@ -17,6 +18,7 @@ namespace Test_deplacement
         SpriteBatch spriteBatch;
         Fantome fantome;
         Decors decors;
+        Back_Ground back_ground;
         bool checkExitKey(KeyboardState keyboardState, GamePadState gamePadState)       // METHODE POUR EXIT LE JEU AVEC ESC ou BACK
         {
             // Check to see whether ESC was pressed on the keyboard 
@@ -51,6 +53,7 @@ namespace Test_deplacement
             spriteBatch = new SpriteBatch(GraphicsDevice);
             fantome = new Fantome(Content);
             decors = new Decors(Content);
+            back_ground = new Back_Ground(Content);
         }
 
 
@@ -81,6 +84,7 @@ namespace Test_deplacement
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            back_ground.Draw(spriteBatch);
             fantome.Draw(spriteBatch);
             decors.Draw(spriteBatch);
             spriteBatch.End();
