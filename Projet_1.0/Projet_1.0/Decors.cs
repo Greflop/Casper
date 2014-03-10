@@ -14,17 +14,24 @@ namespace Test_deplacement
 
         Texture2D decorsTexture;
         Rectangle hitbox;
+        public Vector2 pos;
 
-        public Rectangle Hitbox
+        public Rectangle groundHitbox
         {
             get { return hitbox; }
             set { hitbox = value; }
+        }
+        public Vector2 groundPos
+        {
+            get { return pos; }
+            set { pos = value; }
         }
 
         public Decors(ContentManager content)
         {
             decorsTexture = content.Load<Texture2D>("ground");
-            hitbox = new Rectangle(400, 500, 995, 48); // a definir [ objet a placer fixe ]
+            hitbox = new Rectangle(400, 500,995, 48); // a definir [ objet a placer fixe ]
+            pos = new Vector2(897, 524);
         }
 
         public void Update(Fantome fantome)

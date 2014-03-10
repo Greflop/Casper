@@ -21,7 +21,7 @@ namespace Projet_1._0
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Back_GroundTexture, new Rectangle(0, 0, 1680, 1050), Color.White);
+            spriteBatch.Draw(Back_GroundTexture, new Vector2(0,0), Color.White);
         }
     }
 }
