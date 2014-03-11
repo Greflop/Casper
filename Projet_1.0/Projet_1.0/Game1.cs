@@ -75,7 +75,6 @@ namespace Test_deplacement
                 return;                                                     //
             }                                                               //
             fantome.Update(Mouse.GetState(), Keyboard.GetState(), GraphicsDevice, decors);
-            decors.Update(fantome);
 
             base.Update(gameTime);
         }

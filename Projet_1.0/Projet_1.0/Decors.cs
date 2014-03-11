@@ -13,35 +13,25 @@ namespace Test_deplacement
     {
 
         Texture2D decorsTexture;
-        Rectangle hitbox;
-        public Vector2 pos;
+        Rectangle Block = new Rectangle(400, 501, 995, 48);
+        Rectangle Block2 = new Rectangle(100, 700, 995, 100);
+        Rectangle Block3 = new Rectangle(500, 100, 120, 50);
 
-        public Rectangle groundHitbox
-        {
-            get { return hitbox; }
-            set { hitbox = value; }
-        }
-        public Vector2 groundPos
-        {
-            get { return pos; }
-            set { pos = value; }
-        }
+        public List<Rectangle> groundHitbox = new List<Rectangle>();
 
         public Decors(ContentManager content)
         {
             decorsTexture = content.Load<Texture2D>("ground");
-            hitbox = new Rectangle(400, 500,995, 48); // a definir [ objet a placer fixe ]
-            pos = new Vector2(897, 524);
-        }
-
-        public void Update(Fantome fantome)
-        {
-
+            groundHitbox.Add(Block); // a definir [ objet a placer fixe ]
+            groundHitbox.Add(Block2);
+            groundHitbox.Add(Block3);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(decorsTexture, hitbox, Color.White);
+            spriteBatch.Draw(decorsTexture, Block, Color.White);
+            spriteBatch.Draw(decorsTexture, Block2, Color.White);
+            spriteBatch.Draw(decorsTexture, Block3, Color.White);
         }
     }
 }

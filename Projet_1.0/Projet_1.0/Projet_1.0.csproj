@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Back_Ground.cs" />
     <Compile Include="Decors.cs" />
     <Compile Include="Fantome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
