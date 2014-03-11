@@ -19,6 +19,7 @@ namespace Test_deplacement
         Fantome fantome;
         Decors decors;
         Back_Ground back_ground;
+
         bool checkExitKey(KeyboardState keyboardState, GamePadState gamePadState)       // METHODE POUR EXIT LE JEU AVEC ESC ou BACK
         {
             // Check to see whether ESC was pressed on the keyboard 
@@ -67,15 +68,14 @@ namespace Test_deplacement
                 this.Exit();
             GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);  // touche exit
             KeyboardState keyboardState = Keyboard.GetState();              //
-            // 
-            // Check to see if the user has exited
+                                                                            // 
+            // Check to see if the user has exited                          //
             if (checkExitKey(keyboardState, gamePadState))                  //
             {                                                               //
                 base.Update(gameTime);                                      //
                 return;                                                     //
             }                                                               //
-            fantome.Update(Mouse.GetState(), Keyboard.GetState(), GraphicsDevice, decors);
-
+            fantome.Update(Mouse.GetState(), Keyboard.GetState(), GraphicsDevice, decors,gameTime);
             base.Update(gameTime);
         }
 
