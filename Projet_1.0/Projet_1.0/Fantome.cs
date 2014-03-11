@@ -24,20 +24,20 @@ namespace Test_deplacement
 
         public Fantome(ContentManager content)
         {
-            fantomeIniTexture = content.Load<Texture2D>("CasperStop");
-            fantomeStopTexture = content.Load<Texture2D>("CasperStop");
-            fantomeD1Texture = content.Load<Texture2D>("CasperDroite1");
-            fantomeD2Texture = content.Load<Texture2D>("CasperDroite2");
-            fantomeD3Texture = content.Load<Texture2D>("CasperDroite3");
-            fantomeD4Texture = content.Load<Texture2D>("CasperDroite4");
-            fantomeG1Texture = content.Load<Texture2D>("CasperGauche1");
-            fantomeG2Texture = content.Load<Texture2D>("CasperGauche2");
-            fantomeG3Texture = content.Load<Texture2D>("CasperGauche3");
-            fantomeG4Texture = content.Load<Texture2D>("CasperGauche4");
-            fantomeDSTexture = content.Load<Texture2D>("CasperDroiteSaut");
-            fantomeGSTexture = content.Load<Texture2D>("CasperGaucheSaut");
-            fantomeFallTexture = content.Load<Texture2D>("CasperFall");
-            fantomeSTexture = content.Load<Texture2D>("CasperSaut");
+            fantomeIniTexture = content.Load<Texture2D>("Casper/CasperStop");
+            fantomeStopTexture = content.Load<Texture2D>("Casper/CasperStop");
+            fantomeD1Texture = content.Load<Texture2D>("Casper/CasperDroite1");
+            fantomeD2Texture = content.Load<Texture2D>("Casper/CasperDroite2");
+            fantomeD3Texture = content.Load<Texture2D>("Casper/CasperDroite3");
+            fantomeD4Texture = content.Load<Texture2D>("Casper/CasperDroite4");
+            fantomeG1Texture = content.Load<Texture2D>("Casper/CasperGauche1");
+            fantomeG2Texture = content.Load<Texture2D>("Casper/CasperGauche2");
+            fantomeG3Texture = content.Load<Texture2D>("Casper/CasperGauche3");
+            fantomeG4Texture = content.Load<Texture2D>("Casper/CasperGauche4");
+            fantomeDSTexture = content.Load<Texture2D>("Casper/CasperDroiteSaut");
+            fantomeGSTexture = content.Load<Texture2D>("Casper/CasperGaucheSaut");
+            fantomeFallTexture = content.Load<Texture2D>("Casper/CasperFall");
+            fantomeSTexture = content.Load<Texture2D>("Casper/CasperSaut");
             Hitbox = new Rectangle(0, 0, 40, 68);
         }
 
@@ -132,7 +132,7 @@ namespace Test_deplacement
             if (keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.W))
             {
                 Hitbox.Y -= 5;
-                fantomeIniTexture = fantomeDSTexture;
+                fantomeIniTexture = fantomeSTexture;
                 if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
                 {
                     fantomeIniTexture = fantomeGSTexture;

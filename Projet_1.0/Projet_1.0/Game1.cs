@@ -19,6 +19,8 @@ namespace Test_deplacement
         Fantome fantome;
         Decors decors;
         Back_Ground back_ground;
+        Song music;
+
 
         bool checkExitKey(KeyboardState keyboardState, GamePadState gamePadState)       // METHODE POUR EXIT LE JEU AVEC ESC ou BACK
         {
@@ -55,11 +57,20 @@ namespace Test_deplacement
             fantome = new Fantome(Content);
             decors = new Decors(Content);
             back_ground = new Back_Ground(Content);
+
+
+            music = Content.Load<Song>("SoundFX/Ambiance");
+            MediaPlayer.Play(music);                              // Musique de fond, dès que le jeu est lancé, a changer => créer une classe? 
+            MediaPlayer.IsRepeating = true;
         }
 
 
         protected override void UnloadContent()
         {
+            decors = null;
+            fantome = null;
+            back_ground = null;
+            music = null;
         }
 
         protected override void Update(GameTime gameTime)

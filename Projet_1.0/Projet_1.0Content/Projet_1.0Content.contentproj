@@ -49,7 +49,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Casper1.png">
+    <Compile Include="Casper\Casper1.png">
       <Name>Casper1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -63,76 +63,83 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CasperDroite1.png">
+    <Compile Include="Casper\CasperDroite1.png">
       <Name>CasperDroite1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperDroite2.png">
+    <Compile Include="Casper\CasperDroite2.png">
       <Name>CasperDroite2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperDroiteSaut.png">
+    <Compile Include="Casper\CasperDroiteSaut.png">
       <Name>CasperDroiteSaut</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperFall.png">
+    <Compile Include="Casper\CasperFall.png">
       <Name>CasperFall</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperGauche1.png">
+    <Compile Include="Casper\CasperGauche1.png">
       <Name>CasperGauche1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperGauche2.png">
+    <Compile Include="Casper\CasperGauche2.png">
       <Name>CasperGauche2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperGaucheSaut.png">
+    <Compile Include="Casper\CasperGaucheSaut.png">
       <Name>CasperGaucheSaut</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperSaut.png">
+    <Compile Include="Casper\CasperSaut.png">
       <Name>CasperSaut</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperStop.png">
+    <Compile Include="Casper\CasperStop.png">
       <Name>CasperStop</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CasperGauche3.png">
+    <Compile Include="Casper\CasperGauche3.png">
       <Name>CasperGauche3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CasperDroite3.png">
+    <Compile Include="Casper\CasperDroite3.png">
       <Name>CasperDroite3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CasperDroite4.png">
+    <Compile Include="Casper\CasperDroite4.png">
       <Name>CasperDroite4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CasperGauche4.png">
+    <Compile Include="Casper\CasperGauche4.png">
       <Name>CasperGauche4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SoundFX\Ambiance.mp3">
+      <Name>Ambiance</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
