@@ -53,7 +53,7 @@ namespace Test_deplacement
             porteFinish = content.Load<Texture2D>("Decors/YouWon");
             PorteFinish = new Rectangle(0, 0, Convert.ToInt32(ScreenWidth), Convert.ToInt32(ScreenHeight));
             Null = content.Load<Texture2D>("Decors/Empty");
-            Hitbox = new Rectangle(0, 0, 40, 68);
+            Hitbox = new Rectangle(Convert.ToInt32(80 / coeffX), Convert.ToInt32(902 / coeffY), 40, 68);
             timerjump = 3801;
         }
 
