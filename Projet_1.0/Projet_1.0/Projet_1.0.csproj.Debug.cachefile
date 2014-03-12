@@ -1,5 +1,3 @@
-Content\ground.xnb
-Content\BackGround.xnb
 Content\Casper\Casper1.xnb
 Content\Casper\CasperDroite1.xnb
 Content\Casper\CasperDroite2.xnb
@@ -14,5 +12,11 @@ Content\Casper\CasperGauche3.xnb
 Content\Casper\CasperDroite3.xnb
 Content\Casper\CasperDroite4.xnb
 Content\Casper\CasperGauche4.xnb
+Content\Decors\Background1.xnb
+Content\Decors\Block3x2.xnb
+Content\Decors\Ground1x3.xnb
+Content\Decors\Ground5x1.xnb
+Content\Decors\Ground6x1.xnb
+Content\Decors\Platform2x1.xnb
 Content\SoundFX\Ambiance.xnb
 Content\SoundFX\Ambiance.wma
