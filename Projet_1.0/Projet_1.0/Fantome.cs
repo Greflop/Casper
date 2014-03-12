@@ -20,7 +20,10 @@ namespace Test_deplacement
         Rectangle Hitbox;
         Rectangle CurrentHitbox;
         float timer;
+        float timer2;
         int timecounter;
+        int timerjump;
+        KeyboardState previousKeyboardState;
 
         public Fantome(ContentManager content)
         {
@@ -39,6 +42,17 @@ namespace Test_deplacement
             fantomeFallTexture = content.Load<Texture2D>("Casper/CasperFall");
             fantomeSTexture = content.Load<Texture2D>("Casper/CasperSaut");
             Hitbox = new Rectangle(0, 0, 40, 68);
+            timerjump = 3801;
+        }
+
+        public bool IsTouching(List<Rectangle> lRectangle)
+        {
+            bool isTouching = false;
+            foreach (Rectangle g in lRectangle)
+            {
+                isTouching = Hitbox.Intersects(g) || isTouching;
+            }
+            return isTouching;
         }
 
         public void Update(MouseState mouseState, KeyboardState keyboardState, GraphicsDevice graphicsDevice, Decors decors, GameTime gameTime)
@@ -46,7 +60,9 @@ namespace Test_deplacement
             CurrentHitbox = Hitbox; // To save the last position.
             int isGoingDown = Hitbox.Y;
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            timer2 += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             timecounter += (int)timer;
+            timerjump += (int)timer2 ;
             if (timecounter>10000)
             {
                 timer = 0;
@@ -74,11 +90,11 @@ namespace Test_deplacement
                 {
                     fantomeIniTexture = fantomeD4Texture;
                 }
-                foreach (Rectangle g in decors.groundHitbox)
-                {
-                    if (Hitbox.Intersects(g))
+                //foreach (Rectangle g in decors.groundHitbox)
+                //{
+                    if (IsTouching(decors.groundHitbox))
                         Hitbox = CurrentHitbox;
-                }
+                //}
                 CurrentHitbox = Hitbox;
             }
 
@@ -102,11 +118,11 @@ namespace Test_deplacement
                     fantomeIniTexture = fantomeG4Texture;
                 }
 
-                foreach (Rectangle g in decors.groundHitbox)
-                {
-                    if (Hitbox.Intersects(g))
+                //foreach (Rectangle g in decors.groundHitbox)
+                //{
+                    if (IsTouching(decors.groundHitbox))
                         Hitbox = CurrentHitbox;
-                }
+                //}
                 CurrentHitbox = Hitbox;
             }
 
@@ -122,16 +138,27 @@ namespace Test_deplacement
                 {
                     fantomeIniTexture = fantomeFallTexture;
                 }
-                foreach (Rectangle g in decors.groundHitbox)
-                {
-                    if (Hitbox.Intersects(g))
+                //foreach (Rectangle g in decors.groundHitbox)
+                //{
+                    if (IsTouching(decors.groundHitbox))
                         Hitbox = CurrentHitbox;
-                }
+                //}
             }
 
-            if (keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.W))
+            if (keyboardState.IsKeyDown(Keys.Up) && previousKeyboardState.IsKeyUp(Keys.Up) ) //|| keyboardState.IsKeyDown(Keys.W))
             {
-                Hitbox.Y -= 5;
+                if (IsTouching(decors.groundHitbox))
+                {
+                    timerjump = 0;
+                    timer2 = 0;
+                }
+                timerjump = 0;
+                timer2 = 0;
+            }
+            previousKeyboardState = keyboardState;
+            if (timerjump < 3800)
+            {
+                Hitbox.Y -= 8;
                 fantomeIniTexture = fantomeSTexture;
                 if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
                 {
@@ -141,22 +168,26 @@ namespace Test_deplacement
                 {
                     fantomeIniTexture = fantomeDSTexture;
                 }
-                foreach (Rectangle g in decors.groundHitbox)
-                {
-                    if (Hitbox.Intersects(g))
+                //foreach (Rectangle g in decors.groundHitbox)
+                //{
+                    if (IsTouching(decors.groundHitbox))
                         Hitbox = CurrentHitbox;
-                }
+                //}
             }
             else
             {
 
-                Hitbox.Y++;
+                Hitbox.Y+= 4;
                 if (keyboardState.IsKeyUp(Keys.Up) && keyboardState.IsKeyUp(Keys.Down) && keyboardState.IsKeyUp(Keys.Right) && keyboardState.IsKeyUp(Keys.Left) && keyboardState.IsKeyUp(Keys.W) && keyboardState.IsKeyUp(Keys.S) && keyboardState.IsKeyUp(Keys.D) && keyboardState.IsKeyUp(Keys.A))
                 {
                     fantomeIniTexture = fantomeFallTexture;
                     foreach (Rectangle g in decors.groundHitbox)
                     {
-                        if (Hitbox.Intersects(g))
+                        /*if (Hitbox.Intersects(g))
+                        {
+                            fantomeIniTexture = fantomeStopTexture;
+                        }*/
+                        if (IsTouching(decors.groundHitbox))
                         {
                             fantomeIniTexture = fantomeStopTexture;
                         }

@@ -59,6 +59,7 @@ namespace Test_deplacement
                 if (mouseClick.Intersects(playButton))
                 {
                     gameState = Gamestate.Playing;
+                    IsMouseVisible = false;
                 }
                 else if (mouseClick.Intersects(exitButton))
                 {
@@ -128,22 +129,23 @@ namespace Test_deplacement
             // 
             // Check to see if the user has exited
             mouseState = Mouse.GetState();
-
+            /// <check if mouseclick>
             if (previousmouseState.LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
             {
                 MouseClicked(mouseState.X, mouseState.Y);
             }
-
+            /// </check if mouseclick>
             previousmouseState = mouseState;
 
             if (gameState == Gamestate.Playing)
             {
 
                 fantome.Update(Mouse.GetState(), Keyboard.GetState(), GraphicsDevice, decors, gameTime);
-                if (checkExitKey(keyboardState)) //, gamePadState))             //
+                if (checkExitKey(keyboardState))
                 {
                     gameState = Gamestate.StartMenu;
-                }                                                               //
+                    IsMouseVisible = true;
+                }                                                              
 
             }
             base.Update(gameTime);
