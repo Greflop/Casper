@@ -74,11 +74,13 @@ namespace Test_deplacement
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-                graphics.IsFullScreen = true;
-            int ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            int ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            graphics.PreferredBackBufferWidth = ScreenWidth;           // RESOLUTION D ECRAN
-            graphics.PreferredBackBufferHeight = ScreenHeight;           // RESOLUTION D ECRAN
+            graphics.IsFullScreen = true;
+            double ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            double ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            double coeffX = 1680d / ScreenWidth;
+            double coeffY = 1050d / ScreenHeight;
+            graphics.PreferredBackBufferWidth = Convert.ToInt32(ScreenWidth);           // RESOLUTION D ECRAN
+            graphics.PreferredBackBufferHeight = Convert.ToInt32(ScreenHeight);           // RESOLUTION D ECRAN
             
         }
 
@@ -88,10 +90,13 @@ namespace Test_deplacement
             IsMouseVisible = true;
 
             gameState = Gamestate.StartMenu;
-
-            playButton = new Rectangle(700, 450, 352, 88);
-            optionsButton = new Rectangle(700, 600, 352, 88);
-            exitButton = new Rectangle(700, 750, 352, 88);
+            double ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            double ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            double coeffX = 1680d / ScreenWidth;
+            double coeffY = 1050d / ScreenHeight;
+            playButton = new Rectangle(Convert.ToInt32(700 / coeffX), Convert.ToInt32(450 / coeffY), Convert.ToInt32(352 / coeffX), Convert.ToInt32(88 / coeffY));
+            optionsButton = new Rectangle(Convert.ToInt32(700 / coeffX), Convert.ToInt32(600 / coeffY), Convert.ToInt32(352 / coeffX), Convert.ToInt32(88 / coeffY));
+            exitButton = new Rectangle(Convert.ToInt32(700 / coeffX), Convert.ToInt32(750 / coeffY), Convert.ToInt32(352 / coeffX), Convert.ToInt32(88 / coeffY));
             
             base.Initialize();
         }
@@ -122,9 +127,13 @@ namespace Test_deplacement
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) // De base, no use???
-                this.Exit();
-            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);  // touche exit
+            /// <ControlManetteDeJeu>
+            /// if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) // De base, no use???
+            ///    this.Exit();
+            /// GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+            /// </ControlManetteDeJeu>
+            
+            /// <ExitButtom>
             KeyboardState keyboardState = Keyboard.GetState();              //
             // 
             // Check to see if the user has exited
@@ -153,11 +162,15 @@ namespace Test_deplacement
 
         protected override void Draw(GameTime gameTime)
         {
+            double ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            double ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            double coeffX = 1680d / ScreenWidth;
+            double coeffY = 1050d / ScreenHeight;
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             if (gameState == Gamestate.StartMenu)
             {
-                spriteBatch.Draw(startMenu_text, new Rectangle(0, 0, 1680, 1050), Color.White);
+                spriteBatch.Draw(startMenu_text, new Rectangle(0, 0, Convert.ToInt32(ScreenWidth), Convert.ToInt32(ScreenHeight)), Color.White);
                 spriteBatch.Draw(playButton_text, playButton, Color.White);
                 spriteBatch.Draw(optionsButton_text, optionsButton, Color.White);
                 spriteBatch.Draw(exitButton_text, exitButton, Color.White);
