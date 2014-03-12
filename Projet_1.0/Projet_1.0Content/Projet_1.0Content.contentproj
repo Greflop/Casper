@@ -184,6 +184,32 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decors\PorteFinish.png">
+      <Name>PorteFinish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Decors\PorteStart.png">
+      <Name>PorteStart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Decors\YouWon.png">
+      <Name>YouWon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Decors\Empty.png">
+      <Name>Empty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Menu\Menu.png">
       <Name>Menu</Name>
       <Importer>TextureImporter</Importer>

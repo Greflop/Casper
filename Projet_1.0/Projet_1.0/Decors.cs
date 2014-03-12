@@ -16,11 +16,14 @@ namespace Test_deplacement
         Texture2D Ground5x1;
         Texture2D Ground6x1;
         Texture2D Platform2x1;
+        Texture2D PorteStart;
+        Texture2D PorteFinish;
         double ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         double ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
 
         public List<Rectangle> groundHitbox = new List<Rectangle>();
+        public List<Rectangle> porteHitbox = new List<Rectangle>();
 
         public Decors(ContentManager content)
         {
@@ -29,8 +32,10 @@ namespace Test_deplacement
             Ground5x1 = content.Load<Texture2D>("Decors/Ground5x1");
             Ground6x1 = content.Load<Texture2D>("Decors/Ground6x1");
             Platform2x1 = content.Load<Texture2D>("Decors/Platform2x1");
-            double coeffX = 1680 / ScreenWidth;
-            double coeffY = 1050 / ScreenHeight;
+            PorteStart = content.Load<Texture2D>("Decors/PorteStart");
+            PorteFinish = content.Load<Texture2D>("Decors/PorteFinish");
+            double coeffX = 1680d / ScreenWidth;
+            double coeffY = 1050d / ScreenHeight;
             Rectangle Block1 = new Rectangle(0, Convert.ToInt32(970 / coeffY), Convert.ToInt32(600 / coeffX), Convert.ToInt32(80 / coeffY));
             Rectangle Block2 = new Rectangle(Convert.ToInt32(720 / coeffX), Convert.ToInt32(970 / coeffY), Convert.ToInt32(720 / coeffX), Convert.ToInt32(80 / coeffY));
             Rectangle Block3 = new Rectangle(Convert.ToInt32(1560 / coeffX), Convert.ToInt32(730 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(320 / coeffY));
@@ -52,6 +57,8 @@ namespace Test_deplacement
             Rectangle Block19 = new Rectangle(Convert.ToInt32(1080 / coeffX), Convert.ToInt32(130 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(80 / coeffY));
             Rectangle Block20 = new Rectangle(Convert.ToInt32(1320 / coeffX), Convert.ToInt32(210 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(80 / coeffY));
             Rectangle Block21 = new Rectangle(Convert.ToInt32(1560 / coeffX), Convert.ToInt32(210 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(80 / coeffY));
+            Rectangle Porte1 = new Rectangle(Convert.ToInt32(60 / coeffX), Convert.ToInt32(870 / coeffY), Convert.ToInt32(80 / coeffX), Convert.ToInt32(100 / coeffY));
+            Rectangle Porte2 = new Rectangle(Convert.ToInt32(1580 / coeffX), Convert.ToInt32(110 / coeffY), Convert.ToInt32(80 / coeffX), Convert.ToInt32(100 / coeffY));
             groundHitbox.Add(Block1); // a definir [ objet a placer fixe ]
             groundHitbox.Add(Block2);
             groundHitbox.Add(Block3);
@@ -73,6 +80,7 @@ namespace Test_deplacement
             groundHitbox.Add(Block19);
             groundHitbox.Add(Block20);
             groundHitbox.Add(Block21);
+            porteHitbox.Add(Porte2);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -100,6 +108,8 @@ namespace Test_deplacement
             Rectangle Block19 = new Rectangle(Convert.ToInt32(1080 / coeffX), Convert.ToInt32(130 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(80 / coeffY));
             Rectangle Block20 = new Rectangle(Convert.ToInt32(1320 / coeffX), Convert.ToInt32(210 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(80 / coeffY));
             Rectangle Block21 = new Rectangle(Convert.ToInt32(1560 / coeffX), Convert.ToInt32(210 / coeffY), Convert.ToInt32(120 / coeffX), Convert.ToInt32(80 / coeffY));
+            Rectangle Porte1 = new Rectangle(Convert.ToInt32(60 / coeffX), Convert.ToInt32(870 / coeffY), Convert.ToInt32(80 / coeffX), Convert.ToInt32(100 / coeffY));
+            Rectangle Porte2 = new Rectangle(Convert.ToInt32(1580 / coeffX), Convert.ToInt32(110 / coeffY), Convert.ToInt32(80 / coeffX), Convert.ToInt32(100 / coeffY));
             spriteBatch.Draw(Ground5x1, Block1, Color.White);
             spriteBatch.Draw(Ground6x1, Block2, Color.White);
             spriteBatch.Draw(Ground1x3, Block3, Color.White);
@@ -121,6 +131,8 @@ namespace Test_deplacement
             spriteBatch.Draw(Block3x2, Block19, Color.White);
             spriteBatch.Draw(Block3x2, Block20, Color.White);
             spriteBatch.Draw(Block3x2, Block21, Color.White);
+            spriteBatch.Draw(PorteStart, Porte1, Color.White);
+            spriteBatch.Draw(PorteFinish, Porte2, Color.White);
         }
     }
 }
