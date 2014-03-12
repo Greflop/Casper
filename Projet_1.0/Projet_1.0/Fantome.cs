@@ -26,7 +26,7 @@ namespace Test_deplacement
             Hitbox = new Rectangle(0, 0, 40, 68);
         }
 
-        public void Update(MouseState mouseState, KeyboardState keyboardState, GraphicsDevice graphicsDevice, Decors decors)
+        public void Update(KeyboardState keyboardState, GraphicsDevice graphicsDevice, Decors decors)
         {
             CurrentHitbox = Hitbox; // To save the last position.
 
