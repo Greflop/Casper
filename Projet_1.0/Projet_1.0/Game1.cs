@@ -30,7 +30,7 @@ namespace Test_deplacement
         Rectangle mouseClick;
         MouseState mouseState;
         MouseState previousmouseState;
-
+        Song music;
 
 
         enum Gamestate
@@ -73,9 +73,12 @@ namespace Test_deplacement
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 1680;           // RESOLUTION D ECRAN
-            graphics.PreferredBackBufferHeight = 1050;           // RESOLUTION D ECRAN
-            graphics.IsFullScreen = true;
+                graphics.IsFullScreen = true;
+            int ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            int ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.PreferredBackBufferWidth = ScreenWidth;           // RESOLUTION D ECRAN
+            graphics.PreferredBackBufferHeight = ScreenHeight;           // RESOLUTION D ECRAN
+            
         }
 
         protected override void Initialize()
@@ -102,11 +105,18 @@ namespace Test_deplacement
             playButton_text = Content.Load<Texture2D>("Menu/Bouton_Play");
             optionsButton_text = Content.Load<Texture2D>("Menu/Bouton_Option");
             exitButton_text = Content.Load<Texture2D>("Menu/Bouton_Exit");
+            music = Content.Load<Song>("SoundFX/Ambiance");
+            MediaPlayer.Play(music);                              // Musique de fond, dès que le jeu est lancé, a changer => créer une classe? 
+            MediaPlayer.IsRepeating = true;
         }
 
 
         protected override void UnloadContent()
         {
+            decors = null;
+            fantome = null;
+            back_ground = null;
+            music = null;
         }
 
         protected override void Update(GameTime gameTime)
@@ -129,7 +139,7 @@ namespace Test_deplacement
             if (gameState == Gamestate.Playing)
             {
 
-                fantome.Update(Keyboard.GetState(), GraphicsDevice, decors);
+                fantome.Update(Mouse.GetState(), Keyboard.GetState(), GraphicsDevice, decors, gameTime);
                 if (checkExitKey(keyboardState)) //, gamePadState))             //
                 {
                     gameState = Gamestate.StartMenu;
