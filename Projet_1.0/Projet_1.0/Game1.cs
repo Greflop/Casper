@@ -39,8 +39,10 @@ namespace Test_deplacement
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 1680;           // RESOLUTION D ECRAN
-            graphics.PreferredBackBufferHeight = 1050;           // RESOLUTION D ECRAN
+            int ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            int ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.PreferredBackBufferWidth = ScreenWidth;           // RESOLUTION D ECRAN
+            graphics.PreferredBackBufferHeight = ScreenHeight;           // RESOLUTION D ECRAN
             graphics.IsFullScreen = true;
         }
 

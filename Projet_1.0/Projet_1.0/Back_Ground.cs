@@ -9,11 +9,14 @@ using Microsoft.Xna.Framework;
 namespace Projet_1._0
 {
     class Back_Ground
-    {
+    {        
         Texture2D Back_GroundTexture;
+        int ScreenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        int ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+        
         public Back_Ground(ContentManager content)
         {
-            Back_GroundTexture = content.Load<Texture2D>("BackGround");
+            Back_GroundTexture = content.Load<Texture2D>("Decors/Background1");
         }
         public void Update()
         {
@@ -21,7 +24,8 @@ namespace Projet_1._0
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Back_GroundTexture, new Vector2(0,0), Color.White);
+            Rectangle destinationRectangle = new Rectangle(0, 0, ScreenWidth, ScreenHeight);
+            spriteBatch.Draw(Back_GroundTexture, destinationRectangle, Color.White);
         }
     }
 }
